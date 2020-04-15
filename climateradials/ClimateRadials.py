@@ -25,7 +25,7 @@ from matplotlib.colors import ListedColormap, BoundaryNorm
 
 
 
-class Radial():
+class radial():
     """A class to create a climate radial from an epw input file
     """
 

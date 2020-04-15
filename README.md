@@ -4,16 +4,19 @@ I got inspired by [this](http://www.weather-radials.com) way of visualizing clim
 
 ## Installation
 
-So far I didn't have the time yet to package the files so you will have to manually clone the repo and make sure all dependencies are installed locally.
+Clone the repository and navigate into the repository folder:
+```
+pip install .
+```
 
 ## Usage
 
 It supports both a line and bar plot:
 
 ```python
-from  ClimateRadials import *
+from  climateradials import *
 
-r = Radial("C:\\DAYSIM\\wea\\CAN_ON_Ottawa_CWEC.epw")
+r = radial("C:\\DAYSIM\\wea\\CAN_ON_Ottawa_CWEC.epw")
 r.plot_bars(export = True)
 r.plot_line()
 ```

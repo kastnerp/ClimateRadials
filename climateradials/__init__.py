@@ -1,1 +1,1 @@
-from .ClimateRadials import *
+from .climateradials import *
