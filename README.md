@@ -32,11 +32,11 @@ def plot_line(self, size=None, dpi=600, x=None, y=None, ymin=None, ymax=None,  y
 
 
 
-![Figure_1](climateradials/readme/Figure_1.png)
+![Figure_1](readme/Figure_1.png)
 
 ### Line plot
 
-![Figure_2](climateradials/readme/Figure_2.png)
+![Figure_2](/readme/Figure_2.png)
 
 
 
