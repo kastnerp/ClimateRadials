@@ -1,23 +1,31 @@
 import os
 import math
-import epw
+
 from epw import epw
+
 import seaborn as sns
-from scipy.stats import gamma
-import matplotlib.pyplot as plt
-from pathlib import Path, PureWindowsPath
-from windrose import WindroseAxes
-from windrose import WindAxes
-import matplotlib.cm as cm
-import numpy as np
-from matplotlib.collections import LineCollection
-import matplotlib.colors as col
-from matplotlib.colors import ListedColormap, BoundaryNorm
-import matplotlib.ticker as ticker
 import cmocean
 
+from scipy.stats import gamma
 
-class Radial():
+from pathlib import Path, PureWindowsPath
+
+from windrose import WindroseAxes
+from windrose import WindAxes
+
+import numpy as np
+
+import matplotlib.cm as cm
+import matplotlib.ticker as ticker
+import matplotlib.colors as col
+import matplotlib.pyplot as plt
+from matplotlib.collections import LineCollection
+from matplotlib.colors import ListedColormap, BoundaryNorm
+
+
+
+
+class radial():
     """A class to create a climate radial from an epw input file
     """
 
