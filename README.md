@@ -2,6 +2,12 @@
 
 I got inspired by [this](http://www.weather-radials.com) way of visualizing climate data with radial plots and wanted to recreate it in Python.
 
+## Demo
+
+[Link to demo](https://share.streamlit.io/kastnerp/climateradials/climateradials/streamlit_app.py)
+
+
+
 ## Installation
 
 Clone the repository and navigate into the repository folder:
@@ -42,11 +48,12 @@ def plot_line(self, size=None, dpi=600, x=None, y=None, ymin=None, ymax=None,  y
 ![Figure_2](/readme/Figure_2.png)
 
 
+## Notes
 
+The package contains a hardcopy of the [epw](https://github.com/building-energy/epw) package as it is not currently released as a package on `pip`.
 
 
 ## ToDo:
-
 - [ ] Selection which variable to plot
 - [ ] Incorporate precipitation
 - [ ] Code readability
