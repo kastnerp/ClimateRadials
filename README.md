@@ -4,7 +4,7 @@ I got inspired by [this](http://www.weather-radials.com) way of visualizing clim
 
 ## Demo
 
-[Link to demo](https://share.streamlit.io/kastnerp/climateradials/climateradials/streamlit_app.py)
+[Link to demo](http://bit.ly/climateradials)
 
 
 

@@ -188,15 +188,7 @@ class Radial:
     def delete_epw(self):
         os.remove(self.file_path_local)
 
-        # @profile
 
-    # @profile
-
-    # @profile
-
-    # @profile
-
-    # @profile
 
     def createFig(self):
 
