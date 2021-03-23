@@ -149,3 +149,4 @@ dmypy.json
 
 *.epw
 .idea/
+*.lprof

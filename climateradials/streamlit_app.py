@@ -1,11 +1,35 @@
 import streamlit as st
-from climateradials import Radial
-from epw_urls import epw_urls
+from climateradials import Radial, PlotType
 import random
 from datetime import datetime
+from os.path import basename
+import epw_urls
+
 random.seed(datetime.today().date())
 
-default_url = random.choice(epw_urls)
+
+def plot(epw_url, epw_value, plot_type):
+    if not epw_url.endswith(".epw"):
+        st.write('Please provide a proper url that ends with ''.epw''.')
+        st.stop()
+
+    st.write('Plotting', str(epw_value) + "...")
+    r = Radial(epw_url)
+
+    if plot_type == PlotType.BarPlot.name:
+        r.plot_bars_st()
+    else:
+        # r.plot_line_st()
+        r.plot_lines_st()
+    r.delete_epw()
+
+
+###
+# Input
+###
+
+default_url = random.choice(list(epw_urls.epw_dict.values()))
+
 # Draw a title and some text to the app:
 '''
 # ClimateRadials
@@ -20,47 +44,28 @@ Or select several ones from the dropdown below.
 '''
 
 url_multi = st.multiselect(
-    'Please select a file to plot.',
-    epw_urls)
+    'Please select one or more files to plot.',
+    list(epw_urls.epw_dict.keys()))
 
 st.write('You selected:', url_multi)
 
 style = st.radio(
-    "Please provide a style for the plot",
-    ('Line chart', 'Bar chart'))
+    "Please select a preferred style for the plot",
+    (PlotType.LinePlot.name, PlotType.BarPlot.name))
 
-
-def run():
-    st.write('Plot', key="1")
-    return
-
+###
+# Plotting
+###
 
 if st.button('Plot', key="1"):
 
+    # st.write(url_multi)
+    # st.write(url)
+
     if len(url_multi) > 0 and url_multi is not None:
-        url = url_multi
-
-        for epw in url:
-            r = Radial(epw)
-
-            st.write('Plotting...')
-            if style == "Bar chart":
-
-                r.plot_bars_st()
-            else:
-                r.plot_line_st()
-            r.delete_epw()
-        st.stop()
-
+        for value in url_multi:
+            plot(epw_urls.epw_dict[value], value, style)
     else:
-        r = Radial(url)
+        plot(url, basename(url), style)
 
-        # if st.button('Plot'):
-        st.write('Plotting...')
-        if style == "Bar chart":
-
-            r.plot_bars_st()
-        else:
-            r.plot_line_st()
-        r.delete_epw()
-        st.stop()
+st.stop()
