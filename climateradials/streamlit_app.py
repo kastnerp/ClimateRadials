@@ -9,9 +9,9 @@ random.seed(datetime.today().date())
 
 
 def plot(epw_url, epw_value, plot_type):
-    if not epw_url.endswith(".epw"):
-        st.write('Please provide a proper url that ends with ''.epw''.')
-        st.stop()
+    #if not epw_url.contains(".epw"):
+    #    st.write('Please provide a url that ends with ''.epw''.')
+    #    st.stop()
 
     st.write('Plotting', str(epw_value) + "...")
     r = Radial(epw_url)
