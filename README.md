@@ -12,7 +12,7 @@ I got inspired by [this](http://www.weather-radials.com) way of visualizing clim
 
 Clone the repository and navigate into the repository folder:
 ```
-pip install .
+pip install git+https://github.com/kastnerp/ClimateRadials@master
 ```
 
 ## Usage
