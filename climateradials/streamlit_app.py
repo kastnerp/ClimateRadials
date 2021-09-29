@@ -13,7 +13,7 @@ def plot(epw_url, epw_value, plot_type):
     #    st.write('Please provide a url that ends with ''.epw''.')
     #    st.stop()
 
-    st.write('Plotting', str(epw_value) + "...")
+    st.write('Downloading & Plotting', str(epw_value) + "...")
     r = Radial(epw_url)
 
     if plot_type == PlotType.BarPlot.name:

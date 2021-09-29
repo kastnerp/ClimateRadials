@@ -1,7 +1,9 @@
-from helper_funcs import *
 import requests
-from epw import epw
 import streamlit as st
+
+from epw import epw
+from helper_funcs import *
+
 
 class PlotType(Enum):
     BarPlot = 0
@@ -36,22 +38,19 @@ class Radial:
     def read_epw(self):
         """returns dataframe"""
 
-        if str.startswith(self.epwPath, 'http') and not Path(self.epwPath.split('/')[-1]).is_file():
-            self.read_from_url = True
-            self.file_path_local = Path(Path.cwd() / Path(self.epwPath.split('/')[-1]))
+        file_exists_locally = Path(Path.cwd() / Path(self.epwPath.split('/')[-1])).is_file()
+        self.file_path_local = Path(Path.cwd() / Path(self.epwPath.split('/')[-1]))
 
-            response = requests.get(self.epwPath, stream=True)
+        if str.startswith(self.epwPath, 'http') and not file_exists_locally:
+            self.read_from_url = True
+
+            response = requests.get(self.epwPath, stream=True, headers={'User-agent': 'Mozilla/5.0'})
 
             print("Downloading file...")
             with open(self.file_path_local, "wb") as handle:
                 for data in tqdm(response.iter_content()):
                     handle.write(data)
 
-        elif Path(Path.cwd() / Path(self.epwPath.split('/')[-1])).is_file():
-            self.file_path_local = Path(Path.cwd() / Path(self.epwPath.split('/')[-1]))
-
-        else:
-            self.file_path_local = self.epwPath
         epwO = epw()
         print("Reading file...")
         epwO.read(self.file_path_local)
