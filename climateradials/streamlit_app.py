@@ -5,8 +5,11 @@ from datetime import datetime
 from os.path import basename
 import epw_urls
 
-random.seed(datetime.today().date())
+# Convert the date to a string or integer representation
+seed_value = datetime.today().strftime("%Y%m%d")  # String representation
+# seed_value = int(datetime.today().strftime("%Y%m%d"))  # Integer representation
 
+random.seed(seed_value)
 
 def plot(epw_url, epw_value, plot_type):
     #if not epw_url.contains(".epw"):
