@@ -96,9 +96,10 @@ class Radial:
         self.ax.set_title(self.location, va='bottom', y=0.47)
 
     # @profile
-    def plot_bar_generic(self, x=None, y=None, ymin=None, ymax=None, yorigin=None, ):
+    # @profile
+    def plot_bar_generic(self, x=None, y=None, ymin=None, ymax=None, yorigin=None):
         print("Plotting bar chart...")
-        if (x is None and y is None):
+        if x is None and y is None:
             y = self.data['Dry Bulb Temperature'][::-1]
             x = np.linspace(0, 2 * np.pi, 8760)
 
@@ -113,8 +114,6 @@ class Radial:
         self.createFig()
 
         # Rescale the color map
-
-        # https://matplotlib.org/3.1.0/tutorials/colors/colormap-manipulation.html
         cmap = 'jet'
         norm = col.Normalize(vmin=min(y), vmax=max(y))
 
@@ -123,17 +122,15 @@ class Radial:
         result_array = np.array([])
         if not np.unique(input_array).shape[0] == 1:
             result_array = (input_array - np.min(input_array)) / np.ptp(input_array)
-        # To extend it to higher dimension, add axis= kwarvg to np.min and np.ptp
 
         colors = plt.cm.get_cmap(cmap, int(max(Y) - min(Y)))
         color_vals = colors(result_array)
-        # print("colors: ",colors.shape)
 
         # create a scalarmappable from the colormap
         sm = cm.ScalarMappable(cmap=cmap, norm=norm)
         sm.set_array(np.array([]))
 
-        cbar = self.fig.colorbar(sm)
+        cbar = self.fig.colorbar(sm, ax=self.ax)  # Pass self.ax as the _ax_ argument
         cbar.ax.set_ylabel('Dry Bulb Temperature $[°C]$')
 
         self.ax.bar(days, radii, width=width,
@@ -141,8 +138,6 @@ class Radial:
 
         self.scale_inputs(y, ymin, ymax, yorigin)
         self.set_title()
-
-        # fig, ax = self.getColorMap(fig,ax, x,y, cmap)
 
     def plot_bars(self, dpi=100, x=None, y=None, ymin=None, ymax=None, yorigin=None, export=False):
         plot_type = PlotType.BarPlot
