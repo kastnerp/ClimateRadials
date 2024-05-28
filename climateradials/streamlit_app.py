@@ -37,7 +37,7 @@ default_url = random.choice(list(epw_urls.epw_dict.values()))
 '''
 # ClimateRadials
 
-To plot EPW data in a radial chart, please provide a url pointing to an EPW file of your choice. You may find urls [here]( https://www.energyplus.net/weather).
+To plot EPW data in a radial chart, please provide a url pointing to an EPW file of your choice. You may find urls [here](https://energyplus.net/weather).
 '''
 
 url = st.text_input('Please provide a url here', value=default_url, max_chars=None, key="2", type='default')
