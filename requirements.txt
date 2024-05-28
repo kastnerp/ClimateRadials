@@ -1,10 +1,12 @@
-setuptools>=65.5.1
+setuptools=68.0.0
 ipython>=7.16.3
 traitlets~=4.3.3
 argparse~=1.4.0
+
+
 streamlit=1.35.0
 matplotlib~=3.8.3
-numpy>=1.21
-requests>=2.31.0
+numpy=1.24.3
+requests=2.31.0
 tqdm>=4.66.3
-click==8
+click==8.0.4
